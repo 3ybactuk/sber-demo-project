@@ -2,6 +2,8 @@ package com.sber.demo.sberdemoproject.usecase.phoneservice;
 
 import com.sber.demo.sberdemoproject.entity.phoneservice.items.PhoneItem;
 import com.sber.demo.sberdemoproject.entity.phoneservice.requests.AddItemRequest;
+import com.sber.demo.sberdemoproject.entity.phoneservice.requests.RemoveItemRequest;
+import com.sber.demo.sberdemoproject.entity.phoneservice.requests.UpdateItemRequest;
 import com.sber.demo.sberdemoproject.repository.phoneservice.PhoneRepository;
 import com.sber.demo.sberdemoproject.repository.phoneservice.entities.DBPhoneItem;
 import com.sber.demo.sberdemoproject.utils.modelmapper.ModelMapperUtils;
@@ -47,6 +49,7 @@ public class PhoneUseCase {
     /**
      * Добавляет новый PhoneItem.
      *
+     * @param request AddItemRequest REST request
      * @return Добавленный PhoneItem.
      */
     public PhoneItem addItem(@RequestBody AddItemRequest request) {
@@ -65,10 +68,30 @@ public class PhoneUseCase {
     /**
      * Удаляет элемент PhoneItem из базы данных по его ID, если такого ID нет, то ничего не происходит.
      *
-     * @param id ID удаляемого элемента PhoneItem.
+     * @param request RemoveItemRequest REST request
      */
-    public void removeById(Long id) {
+    public void removeItem(@RequestBody RemoveItemRequest request) {
+        Long id = request.getId();
         repository.deleteById(id);
+    }
+
+    /**
+     * Обновляет существующий элемент PhoneItem в базе данных.
+     *
+     * @param request UpdateItemRequest REST request
+     * @return Обновленный элемент PhoneItem.
+     */
+
+    public PhoneItem updateItem(@RequestBody UpdateItemRequest request) {
+        PhoneItem phoneItem = new PhoneItem();
+        phoneItem.setId(request.getId());
+        phoneItem.setName(request.getName());
+        phoneItem.setDescription(request.getDescription());
+        phoneItem.setQuantity(request.getQuantity());
+        phoneItem.setPrice(request.getPrice());
+
+        DBPhoneItem itemToUpdate = ModelMapperUtils.map(phoneItem, DBPhoneItem.class);
+        return ModelMapperUtils.map(repository.save(itemToUpdate), PhoneItem.class);
     }
 
 }
