@@ -1,9 +1,42 @@
 services:
-  postgres:
+#  postgres:
+#    image: 'postgres:latest'
+#    environment:
+#      - 'POSTGRES_DB=mydatabase'
+#      - 'POSTGRES_PASSWORD=secret'
+#      - 'POSTGRES_USER=myuser'
+#    ports:
+#      - '5432'
+
+  postgres_container:
     image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
     ports:
-      - '5432'
+      - "5432:5432"
+    restart: always
+    environment:
+      - 'POSTGRES_DB=mobile_phone_shop'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_HOST=5432'
+    healthcheck:
+      test: "pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  sber-demo-app:
+    build:
+      context: "."
+      dockerfile: ".docker/app.Dockerfile"
+    image: 'sber-demo-app:first'
+    depends_on:
+      postgres_container:
+        condition: service_healthy
+#      build:
+#        condition: service_completed_successfully
+    restart: unless-stopped
+#    volumes:
+#      - ./migrations/:/app/migrations
+    ports:
+      - '8080:8080'
+
