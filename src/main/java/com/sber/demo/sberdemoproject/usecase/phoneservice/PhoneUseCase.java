@@ -47,7 +47,6 @@ public class PhoneUseCase {
     /**
      * Добавляет новый PhoneItem.
      *
-     * @param item Добавляемый PhoneItem.
      * @return Добавленный PhoneItem.
      */
     public PhoneItem addItem(@RequestBody AddItemRequest request) {
@@ -62,4 +61,14 @@ public class PhoneUseCase {
         DBPhoneItem itemToAdd = ModelMapperUtils.map(item, DBPhoneItem.class);
         return ModelMapperUtils.map(repository.save(itemToAdd), PhoneItem.class);
     }
+
+    /**
+     * Удаляет элемент PhoneItem из базы данных по его ID, если такого ID нет, то ничего не происходит.
+     *
+     * @param id ID удаляемого элемента PhoneItem.
+     */
+    public void removeById(Long id) {
+        repository.deleteById(id);
+    }
+
 }

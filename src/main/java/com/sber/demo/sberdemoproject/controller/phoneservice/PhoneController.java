@@ -2,6 +2,7 @@ package com.sber.demo.sberdemoproject.controller.phoneservice;
 
 import com.sber.demo.sberdemoproject.entity.phoneservice.items.PhoneItem;
 import com.sber.demo.sberdemoproject.entity.phoneservice.requests.AddItemRequest;
+import com.sber.demo.sberdemoproject.entity.phoneservice.requests.RemoveItemRequest;
 import com.sber.demo.sberdemoproject.usecase.phoneservice.PhoneUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,4 +39,12 @@ public class PhoneController {
 
         return ResponseEntity.ok(phoneItem);
     }
+
+    @PostMapping("/phone_items/remove")
+    public ResponseEntity<PhoneItem> removeItem(@RequestBody RemoveItemRequest request) {
+        Long id = request.getId();
+        phoneUseCase.removeById(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
