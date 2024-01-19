@@ -86,12 +86,13 @@ public class PhoneUseCase {
         PhoneItem phoneItem = new PhoneItem();
         phoneItem.setId(request.getId());
         phoneItem.setName(request.getName());
+        phoneItem.setManufacturer(request.getManufacturer());
         phoneItem.setDescription(request.getDescription());
+        phoneItem.setStorageSpaceGb(request.getStorageSpaceGb());
         phoneItem.setQuantity(request.getQuantity());
         phoneItem.setPrice(request.getPrice());
 
         DBPhoneItem itemToUpdate = ModelMapperUtils.map(phoneItem, DBPhoneItem.class);
         return ModelMapperUtils.map(repository.save(itemToUpdate), PhoneItem.class);
     }
-
 }
