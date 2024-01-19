@@ -9,7 +9,9 @@ services:
 #      - '5432'
 
   postgres_container:
-    image: 'postgres:latest'
+    build:
+      context: ./.docker
+      dockerfile: postgres.Dockerfile
     ports:
       - "5432:5432"
     restart: always
