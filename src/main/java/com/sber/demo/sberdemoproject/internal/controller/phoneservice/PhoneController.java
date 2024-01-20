@@ -1,10 +1,10 @@
-package com.sber.demo.sberdemoproject.controller.phoneservice;
+package com.sber.demo.sberdemoproject.internal.controller.phoneservice;
 
-import com.sber.demo.sberdemoproject.entity.phoneservice.items.PhoneItem;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.AddItemRequest;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.RemoveItemRequest;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.UpdateItemRequest;
-import com.sber.demo.sberdemoproject.usecase.phoneservice.PhoneUseCase;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.items.PhoneItem;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.AddItemRequest;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.RemoveItemRequest;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.UpdateItemRequest;
+import com.sber.demo.sberdemoproject.internal.usecase.phoneservice.PhoneUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

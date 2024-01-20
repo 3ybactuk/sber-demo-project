@@ -1,4 +1,4 @@
-package com.sber.demo.sberdemoproject.entity.phoneservice.requests;
+package com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests;
 
 import lombok.Data;
 

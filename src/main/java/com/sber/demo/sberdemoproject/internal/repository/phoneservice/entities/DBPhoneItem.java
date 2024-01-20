@@ -1,4 +1,4 @@
-package com.sber.demo.sberdemoproject.repository.phoneservice.entities;
+package com.sber.demo.sberdemoproject.internal.repository.phoneservice.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

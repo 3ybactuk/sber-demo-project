@@ -1,11 +1,11 @@
-package com.sber.demo.sberdemoproject.usecase.phoneservice;
+package com.sber.demo.sberdemoproject.internal.usecase.phoneservice;
 
-import com.sber.demo.sberdemoproject.entity.phoneservice.items.PhoneItem;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.AddItemRequest;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.RemoveItemRequest;
-import com.sber.demo.sberdemoproject.entity.phoneservice.requests.UpdateItemRequest;
-import com.sber.demo.sberdemoproject.repository.phoneservice.PhoneRepository;
-import com.sber.demo.sberdemoproject.repository.phoneservice.entities.DBPhoneItem;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.items.PhoneItem;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.AddItemRequest;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.RemoveItemRequest;
+import com.sber.demo.sberdemoproject.internal.entity.phoneservice.requests.UpdateItemRequest;
+import com.sber.demo.sberdemoproject.internal.repository.phoneservice.PhoneRepository;
+import com.sber.demo.sberdemoproject.internal.repository.phoneservice.entities.DBPhoneItem;
 import com.sber.demo.sberdemoproject.utils.modelmapper.ModelMapperUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -81,7 +81,6 @@ public class PhoneUseCase {
      * @param request UpdateItemRequest REST request
      * @return Обновленный элемент PhoneItem.
      */
-
     public PhoneItem updateItem(@RequestBody UpdateItemRequest request) {
         PhoneItem phoneItem = new PhoneItem();
         phoneItem.setId(request.getId());

@@ -1,4 +1,4 @@
-package com.sber.demo.sberdemoproject.entity.phoneservice.items;
+package com.sber.demo.sberdemoproject.internal.entity.phoneservice.items;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

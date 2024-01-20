@@ -1,6 +1,6 @@
-package com.sber.demo.sberdemoproject.repository.phoneservice;
+package com.sber.demo.sberdemoproject.internal.repository.phoneservice;
 
-import com.sber.demo.sberdemoproject.repository.phoneservice.entities.DBPhoneItem;
+import com.sber.demo.sberdemoproject.internal.repository.phoneservice.entities.DBPhoneItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
