@@ -68,7 +68,7 @@ public class PhoneUseCase {
         try {
             PhoneItemValidation.validatePhoneItem(request.getPrice(), request.getQuantity(), request.getStorageSpaceGb());
         } catch (ValidationException e) {
-            log.error("UseCase addItem: validation error can't add item: ", e);
+            log.error("UseCase addItem: validation error can't add item: {}", e.getMessage());
             throw e;
         }
 
@@ -109,7 +109,7 @@ public class PhoneUseCase {
         try {
             PhoneItemValidation.validatePhoneItem(request.getPrice(), request.getQuantity(), request.getStorageSpaceGb());
         } catch (ValidationException e) {
-            log.error("UseCase updateItem: validation error can't add item: ", e);
+            log.error("UseCase updateItem: validation error can't add item: {}", e.getMessage());
             throw e;
         }
 
